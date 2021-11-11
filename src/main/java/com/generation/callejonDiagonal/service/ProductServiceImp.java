@@ -8,15 +8,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ProductServiceImp implements  ProductService{
+public class ProductServiceImp implements ProductService{
 
+    /*Dependencia*/
     private final ProductRepository productRepository;
     private int id;
 
+    /*inyección de dependencias*/
     public ProductServiceImp(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
+    /*Metodos*/
     @Override
     public Product getProduct(int id) {
         Optional<Product> product = Optional.ofNullable(productRepository.findById(id));
