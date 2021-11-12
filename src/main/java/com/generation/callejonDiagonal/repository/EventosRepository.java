@@ -1,6 +1,6 @@
-package com.generation.callejonDiagonal.Repository;
+package com.generation.callejonDiagonal.repository;
 
-import com.generation.callejonDiagonal.Model.Eventos;
+import com.generation.callejonDiagonal.model.Eventos;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

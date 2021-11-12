@@ -1,6 +1,7 @@
 package com.generation.callejonDiagonal.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="usuarios")
@@ -31,6 +32,9 @@ public class Usuario {
 
         @Column(name="res_usu")
         private String respuesta;
+
+        @OneToMany(mappedBy = "usuario")
+        private List<HistorialPedidos> historialPedidos;
 
 //        public Usuario(Integer Id,String nombre, String familia, String email, String password, Integer casa, String respuesta, Integer pregunta){
 //                this.id=id;
