@@ -1,7 +1,7 @@
-package com.generation.callejonDiagonal.Controller;
+package com.generation.callejonDiagonal.controller;
 
-import com.generation.callejonDiagonal.Model.Eventos;
-import com.generation.callejonDiagonal.Service.EventosService;
+import com.generation.callejonDiagonal.model.Eventos;
+import com.generation.callejonDiagonal.service.EventosService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
