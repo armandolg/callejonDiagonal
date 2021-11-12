@@ -96,7 +96,6 @@ public class Product {
         this.descripcion = descripcion;
     }
 
-
     /*Estos ultimos son solo para probar si no funciona los borrare*/
     public int getEstado() {
         return estado;

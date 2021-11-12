@@ -1,7 +1,6 @@
-package com.generation.callejonDiagonal.Service;
-
-import com.generation.callejonDiagonal.Model.Eventos;
-import com.generation.callejonDiagonal.Repository.EventosRepository;
+package com.generation.callejonDiagonal.service;
+import com.generation.callejonDiagonal.model.Eventos;
+import com.generation.callejonDiagonal.repository.EventosRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
