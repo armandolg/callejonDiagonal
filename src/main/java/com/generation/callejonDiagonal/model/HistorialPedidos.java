@@ -2,12 +2,14 @@ package com.generation.callejonDiagonal.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
 
 @Entity
 @Table(name="historial_pedidos")
-public class HistorialPedidos {
+public class HistorialPedidos{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,14 +22,6 @@ public class HistorialPedidos {
     @Column(name="id_lec")
     private int lechuza;
 
-//    @ManyToOne
-//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-//    private Usuario usuario;
-
-//    @ManyToOne
-//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-//    private Lechuza lechuza;
-
     @Column(name="lug_ent")
     private String lugarEntrega;
 
@@ -37,6 +31,11 @@ public class HistorialPedidos {
     @Column(name="dia_ent")
     private Timestamp diaEntrega;
 
+    @OneToMany(mappedBy = "historialPedidos")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<HistorialDetalle> historialDetalleList;
+
+    //Metodos get y set
 
     public int getId() {
         return id;
@@ -84,5 +83,13 @@ public class HistorialPedidos {
 
     public void setDiaEntrega(Timestamp diaEntrega) {
         this.diaEntrega = diaEntrega;
+    }
+
+    public List<HistorialDetalle> getHistorialDetalleList() {
+        return historialDetalleList;
+    }
+
+    public void setHistorialDetalleList(List<HistorialDetalle> historialDetalleList) {
+        this.historialDetalleList = historialDetalleList;
     }
 }

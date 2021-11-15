@@ -12,6 +12,10 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
 
     List<Product> findAll();
 
-//    @Query("select * from callejon_diagonal.productos where id_est=3 or id_est=4")
-//    List<Product> destacados();
+    @Query(value="select * from productos where id_est=3 or id_est=4",
+    nativeQuery=true)
+    List<Product> destacados();
+
+    Product save(int id);
+
 }
