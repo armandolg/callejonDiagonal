@@ -29,8 +29,13 @@ public class ProductServiceImp implements ProductService{
        return (List<Product>) productRepository.findAll();
     }
 
-//    @Override
-//    public List<Product> getDestacado( ){
-//        return (List<Product>) productRepository.destacados();
-//    }
+    @Override
+    public List<Product> getDestacado(){
+       return productRepository.destacados();
+    }
+
+    @Override
+    public void save(int id){
+        productRepository.save(id);
+    }
 }

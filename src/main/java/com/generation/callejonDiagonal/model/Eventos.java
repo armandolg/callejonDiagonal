@@ -2,6 +2,7 @@ package com.generation.callejonDiagonal.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Calendar;
 
 @Entity
 @Table(name = "eventos")
@@ -26,7 +27,7 @@ public class Eventos {
 
     @Column(nullable = false, name = "fec_eve")
     @Temporal(TemporalType.DATE)
-    private Timestamp fecha;
+    private Calendar fecha;
 
     public int getEventoId() {
         return id;
@@ -64,11 +65,11 @@ public class Eventos {
         this.texto = texto;
     }
 
-    public Timestamp getFecha() {
+    public Calendar getFecha() {
         return fecha;
     }
 
-    public void setFecha(Timestamp fecha) {
+    public void setFecha(Calendar fecha) {
         this.fecha = fecha;
     }
 }

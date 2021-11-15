@@ -1,5 +1,8 @@
 package com.generation.callejonDiagonal.model;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="productos")
@@ -7,38 +10,41 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_pro")
+    @Column(name = "id_pro")
     private int id;
 
-    @Column(name="nom_pro")
+    @Column(name = "nom_pro")
     private String nombre;
 
-    @Column(name="des_pro")
+    @Column(name = "des_pro")
     private int descuento;
 
-    @Column(name="cos_pro")
-    private float costo;
+    @Column(name = "cos_pro")
+    private float precio;
 
-    @Column(name="img_pro")
-    private String rutaImagen;
+    @Column(name = "img_pro")
+    private String img;
 
-    @Column(name="sto_pro")
+    @Column(name = "sto_pro")
     private int stock;
 
-    @Column(name="text_pro")
+    @Column(name = "text_pro")
     private String descripcion;
 
-    /*Falta agregar las relaciones con las otras tablas*/
-    /*Lo int*/
+    @ManyToOne
+    @JoinColumn(name="id_est")
+    private EstadoProductos estadoProductos;
 
-    @Column(name="id_est")
-    private int estado;
+    @ManyToOne
+    @JoinColumn(name="id_cat")
+    private CategoriaProducto categoriaProducto;
 
-    @Column(name="id_cat")
-    private int categoria;
+    @OneToMany(mappedBy = "products")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<HistorialDetalle> historialDetalleList;
 
-//    @ManyToOne(optional = false)
-//    private ProductState productState;
+
+    //Metodos get y set Debo Agregarlos
 
     public int getId() {
         return id;
@@ -64,20 +70,20 @@ public class Product {
         this.descuento = descuento;
     }
 
-    public float getCosto() {
-        return costo;
+    public float getPrecio() {
+        return precio;
     }
 
-    public void setCosto(float costo) {
-        this.costo = costo;
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
 
-    public String getRutaImagen() {
-        return rutaImagen;
+    public String getImg() {
+        return img;
     }
 
-    public void setRutaImagen(String rutaImagen) {
-        this.rutaImagen = rutaImagen;
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public int getStock() {
@@ -96,20 +102,21 @@ public class Product {
         this.descripcion = descripcion;
     }
 
-    /*Estos ultimos son solo para probar si no funciona los borrare*/
-    public int getEstado() {
-        return estado;
+    public EstadoProductos getEstadoProductos() {
+        return estadoProductos;
     }
 
-    public void setEstado(int estado) {
-        this.estado = estado;
+    public void setEstadoProductos(EstadoProductos estadoProductos) {
+        this.estadoProductos = estadoProductos;
     }
 
-    public int getCategoria() {
-        return categoria;
+    public CategoriaProducto getCategoriaProducto() {
+        return categoriaProducto;
     }
 
-    public void setCategoria(int categoria) {
-        this.categoria = categoria;
+    public void setCategoriaProducto(CategoriaProducto categoriaProducto) {
+        this.categoriaProducto = categoriaProducto;
     }
+
+
 }
