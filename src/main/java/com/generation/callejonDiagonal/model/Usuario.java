@@ -1,5 +1,6 @@
 package com.generation.callejonDiagonal.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 import java.util.List;
 
@@ -24,28 +25,23 @@ public class Usuario {
         @Column(name="pas_usu")
         private String password;
 
-        @Column(name="id_casa")
-        private Integer casa;
-
         @Column(name="id_pre")
         private Integer pregunta;
 
-        @Column(name="res_usu")
-        private String respuesta;
-
         @OneToMany(mappedBy = "usuario")
+        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
         private List<HistorialPedidos> historialPedidos;
 
-//        public Usuario(Integer Id,String nombre, String familia, String email, String password, Integer casa, String respuesta, Integer pregunta){
-//                this.id=id;
-//                this.nombre=nombre;
-//                this.familia=familia;
-//                this.email=email;
-//                this.password=password;
-//                this.casa=casa;
-//                this.pregunta=pregunta;
-//                this.respuesta=respuesta;
-//        }
+        @OneToMany(mappedBy = "usuario")
+        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+        private List<Contacto> contactoList;
+
+        @OneToMany(mappedBy = "usuario")
+        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+        private List<UsuarioEventos> usuarioEventosList;
+
+        @ManyToOne
+        private CasasHogwarts casasHogwarts;
 
         //Métodos get y set
 
@@ -53,7 +49,7 @@ public class Usuario {
                 return id;
         }
 
-        public void setId(int id) {
+        public void setId(Integer id) {
                 this.id = id;
         }
 
@@ -61,7 +57,7 @@ public class Usuario {
                 return nombre;
         }
 
-        public void setNombre(String usuario) {
+        public void setNombre(String nombre) {
                 this.nombre = nombre;
         }
 
@@ -89,27 +85,43 @@ public class Usuario {
                 this.password = password;
         }
 
-        public Integer getCasa() {
-                return casa;
-        }
-
-        public void setCasa(int casa) {
-                this.casa = casa;
-        }
-
         public Integer getPregunta() {
                 return pregunta;
         }
 
-        public void setPregunta(int pregunta) {
+        public void setPregunta(Integer pregunta) {
                 this.pregunta = pregunta;
         }
 
-        public String getRespuesta() {
-                return respuesta;
+        public List<HistorialPedidos> getHistorialPedidos() {
+                return historialPedidos;
         }
 
-        public void setRespuesta(String respuesta) {
-                this.respuesta = respuesta;
+        public void setHistorialPedidos(List<HistorialPedidos> historialPedidos) {
+                this.historialPedidos = historialPedidos;
+        }
+
+        public List<Contacto> getContactoList() {
+                return contactoList;
+        }
+
+        public void setContactoList(List<Contacto> contactoList) {
+                this.contactoList = contactoList;
+        }
+
+        public List<UsuarioEventos> getUsuarioEventosList() {
+                return usuarioEventosList;
+        }
+
+        public void setUsuarioEventosList(List<UsuarioEventos> usuarioEventosList) {
+                this.usuarioEventosList = usuarioEventosList;
+        }
+
+        public CasasHogwarts getCasasHogwarts() {
+                return casasHogwarts;
+        }
+
+        public void setCasasHogwarts(CasasHogwarts casasHogwarts) {
+                this.casasHogwarts = casasHogwarts;
         }
 }

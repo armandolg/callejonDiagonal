@@ -1,8 +1,11 @@
 package com.generation.callejonDiagonal.repository;
 
+import com.generation.callejonDiagonal.model.Contacto;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface Contacto extends CrudRepository<Contacto, Integer> {
+@Repository
+public interface ContactoRepository extends CrudRepository<Contacto, Integer> {
 
     Contacto findByid(Integer id);
 

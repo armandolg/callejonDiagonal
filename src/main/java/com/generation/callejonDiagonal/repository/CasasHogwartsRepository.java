@@ -1,2 +1,4 @@
-package com.generation.callejonDiagonal.repository;public interface CasasHogwarts {
+package com.generation.callejonDiagonal.repository;
+
+public interface CasasHogwartsRepository {
 }
