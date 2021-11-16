@@ -2,12 +2,12 @@ package com.generation.callejonDiagonal.controller;
 
 import com.generation.callejonDiagonal.model.Usuario;
 import com.generation.callejonDiagonal.service.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/user")
-
 public class UsuarioController {
 
     private final UsuarioService usuarioService;

@@ -1,10 +1,9 @@
 package com.generation.callejonDiagonal.repository;
 
-import com.generation.callejonDiagonal.model.CasasHogwarts;
+import com.generation.callejonDiagonal.model.Preguntas;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CasasHogwartsRepository extends CrudRepository<CasasHogwarts, Integer> {
-
+public interface PreguntasRepository extends CrudRepository<Preguntas, Integer> {
 }
