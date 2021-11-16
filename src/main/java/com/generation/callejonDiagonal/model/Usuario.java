@@ -10,38 +10,51 @@ public class Usuario {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name="id_usu")
+        @Column(name="id_usu", nullable = false)
         private Integer id;
 
-        @Column(name="nom_usu")
+        @Column(name="nom_usu", nullable = false)
         private String nombre;
 
-        @Column(name="fam_usu")
+        @Column(name="fam_usu", nullable = false)
         private String familia;
 
-        @Column(name="ema_usu")
+        @Column(name="ema_usu", nullable = false, unique = true)
         private String email;
 
-        @Column(name="pas_usu")
+        @Column(name="pas_usu", nullable = false)
         private String password;
 
-        @Column(name="id_pre")
-        private Integer pregunta;
+
+//        @Column(name="id_pre", nullable = false)
+//        private Integer pregunta;
+
+        @OneToOne
+        @JoinColumn(name="id_cas", nullable = false)
+        private CasasHogwarts casasHogwarts;
+
+        @OneToOne
+        @JoinColumn(name="id_pre", nullable = false)
+        private Preguntas preguntas;
+
+        @Column(name="res_usu")
+        private String respuesta;
+
 
         @OneToMany(mappedBy = "usuario")
+        @Column(nullable = true)
         @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
         private List<HistorialPedidos> historialPedidos;
 
         @OneToMany(mappedBy = "usuario")
+        @Column(nullable = true)
         @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
         private List<Contacto> contactoList;
 
         @OneToMany(mappedBy = "usuario")
+        @Column(nullable = true)
         @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
         private List<UsuarioEventos> usuarioEventosList;
-
-        @ManyToOne
-        private CasasHogwarts casasHogwarts;
 
         //Métodos get y set
 
@@ -85,13 +98,6 @@ public class Usuario {
                 this.password = password;
         }
 
-        public Integer getPregunta() {
-                return pregunta;
-        }
-
-        public void setPregunta(Integer pregunta) {
-                this.pregunta = pregunta;
-        }
 
         public List<HistorialPedidos> getHistorialPedidos() {
                 return historialPedidos;
@@ -123,5 +129,21 @@ public class Usuario {
 
         public void setCasasHogwarts(CasasHogwarts casasHogwarts) {
                 this.casasHogwarts = casasHogwarts;
+        }
+
+        public Preguntas getPreguntas() {
+                return preguntas;
+        }
+
+        public void setPreguntas(Preguntas preguntas) {
+                this.preguntas = preguntas;
+        }
+
+        public String getRespuesta() {
+                return respuesta;
+        }
+
+        public void setRespuesta(String respuesta) {
+                this.respuesta = respuesta;
         }
 }
