@@ -1,8 +1,11 @@
 package com.generation.callejonDiagonal.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.List;
 
 @Entity
 @Table(name = "eventos")
@@ -28,6 +31,13 @@ public class Eventos {
     @Column(nullable = false, name = "fec_eve")
     @Temporal(TemporalType.DATE)
     private Calendar fecha;
+
+    @OneToMany(mappedBy = "eventos")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<UsuarioEventos> usuarioEventosList;
+
+    @ManyToOne
+    private Editores editores;
 
     public int getEventoId() {
         return id;
@@ -71,5 +81,21 @@ public class Eventos {
 
     public void setFecha(Calendar fecha) {
         this.fecha = fecha;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<UsuarioEventos> getUsuarioEventosList() {
+        return usuarioEventosList;
+    }
+
+    public void setUsuarioEventosList(List<UsuarioEventos> usuarioEventosList) {
+        this.usuarioEventosList = usuarioEventosList;
     }
 }
