@@ -7,9 +7,8 @@ public interface UsuarioService {
 
     Usuario saveUsuario(Usuario usuario);
 
-    void delete(Integer id);
+    void delete(Usuario usuario);
 
-    List<Usuario> findByAll();
-
+    List<Usuario> findAll();
 
 }

@@ -9,28 +9,21 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/user")
 
 public class UsuarioController {
+
     private final UsuarioService usuarioService;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-//    public UsuarioController (UsuarioService usuarioService, BCryptPasswordEncoder bCryptPasswordEncoder){
-//        this.usuarioService=usuarioService;
-//        this.bCryptPasswordEncoder=bCryptPasswordEncoder;
-//    }
-
-    public UsuarioController (UsuarioService usuarioService){
-        this.usuarioService=usuarioService;
+    public UsuarioController(UsuarioService usuarioService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.usuarioService = usuarioService;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
-
-//    @PostMapping
-//    public Usuario saveUsuario(@RequestBody Usuario usuario) {
-//        usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
-//        return usuarioService.saveUsuario(usuario);
-//    }
 
     @PostMapping
     public Usuario saveUsuario(@RequestBody Usuario usuario) {
+        usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
         return usuarioService.saveUsuario(usuario);
     }
+
 
     @GetMapping("/{id}")
     public Usuario getUsuario(@PathVariable Integer id) {

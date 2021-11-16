@@ -10,7 +10,5 @@ import java.util.List;
 public interface EventosRepository extends CrudRepository<Eventos,Integer> {
 
     List<Eventos> findAll();
-    //List<Eventos> findAllOrderByFechaDesc();
-    //implementation 'org.springframework.boot:spring-boot-starter-security'
-    //testImplementation 'org.springframework.security:spring-security-test'
+
 }
