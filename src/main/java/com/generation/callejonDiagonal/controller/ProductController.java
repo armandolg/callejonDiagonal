@@ -33,9 +33,8 @@ public class ProductController {
         return productService.getDestacado();
     }
 
-    @PostMapping("/actualiza/{id}")
-    public void actualizarStock(@PathVariable int id){
-        productService.getProduct(id).setStock(productService.getProduct(id).getStock()-1);
-        productService.save(id);
+    @PostMapping
+    public Product saveProduct(Product product){
+        return productService.save(product);
     }
 }

@@ -25,16 +25,17 @@ public class Usuario {
         @Column(name="pas_usu", nullable = false)
         private String password;
 
-
 //        @Column(name="id_pre", nullable = false)
 //        private Integer pregunta;
 
-        @OneToOne
-        @JoinColumn(name="id_cas", nullable = false)
+        @OneToOne(mappedBy = "usuario")
         private CasasHogwarts casasHogwarts;
 
-        @OneToOne
-        @JoinColumn(name="id_pre", nullable = false)
+//      @OneToOne
+//      @JoinColumn(name="id_cas", nullable = false)
+//      private CasasHogwarts casasHogwarts;
+
+        @OneToOne(mappedBy = "usuario")
         private Preguntas preguntas;
 
         @Column(name="res_usu")
