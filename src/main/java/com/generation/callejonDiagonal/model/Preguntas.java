@@ -17,9 +17,10 @@ public class Preguntas {
     @Column(name="tex_pre")
     private String pregunta;
 
-    @OneToMany(mappedBy = "preguntas")
+    @OneToOne
+    @JoinColumn(name="id_pre", nullable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List<Usuario> usuarioList;
+    private Usuario usuario;
 
     public int getId() {
         return id;
@@ -37,11 +38,20 @@ public class Preguntas {
         this.pregunta = pregunta;
     }
 
-    public List<Usuario> getUsuarioList() {
-        return usuarioList;
+//    public List<Usuario> getUsuarioList() {
+//        return usuarioList;
+//    }
+//
+//    public void setUsuarioList(List<Usuario> usuarioList) {
+//        this.usuarioList = usuarioList;
+//    }
+
+
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuarioList(List<Usuario> usuarioList) {
-        this.usuarioList = usuarioList;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

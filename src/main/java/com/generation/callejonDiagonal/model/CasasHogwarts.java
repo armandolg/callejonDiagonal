@@ -17,9 +17,10 @@ public class CasasHogwarts {
     @Column(name="nom_cas")
     private String nombre;
 
-    @OneToMany(mappedBy = "casasHogwarts")
+    @OneToOne
+    @JoinColumn(name="id_usu", nullable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List<Usuario> usuarioList;
+    private Usuario usuario;
 
     public Integer getId() {
         return id;
@@ -37,11 +38,19 @@ public class CasasHogwarts {
         this.nombre = nombre;
     }
 
-    public List<Usuario> getUsuarioList() {
-        return usuarioList;
+//    public List<Usuario> getUsuarioList() {
+//        return usuarioList;
+//    }
+//
+//    public void setUsuarioList(List<Usuario> usuarioList) {
+//        this.usuarioList = usuarioList;
+//    }
+
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuarioList(List<Usuario> usuarioList) {
-        this.usuarioList = usuarioList;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

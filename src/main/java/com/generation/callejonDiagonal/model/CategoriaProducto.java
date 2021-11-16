@@ -21,6 +21,10 @@ public class CategoriaProducto {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Product> productList;
 
+//    @OneToOne
+//    @JoinColumn(name="id_pro")
+//    private Product product;
+
     //Falta agregar los metodos getter y setter
 
     public int getId() {
@@ -46,4 +50,14 @@ public class CategoriaProducto {
     public void setProductList(List<Product> productList) {
         this.productList = productList;
     }
+
+
+//    public Product getProduct() {
+//        return product;
+//    }
+//
+//    public void setProduct(Product product) {
+//        this.product = product;
+//    }
 }
+
