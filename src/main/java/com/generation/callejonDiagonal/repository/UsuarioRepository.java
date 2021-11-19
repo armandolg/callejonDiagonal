@@ -11,14 +11,13 @@ import java.util.List;
 public interface UsuarioRepository
     extends CrudRepository <Usuario, Integer> {
 
-    //El metodo busca por id
     Usuario findByid(int id);
-
-    //El método busca por nombre
-    Usuario findBynombre(String nombre);
 
     //El método trae una lista de usuarios
     List<Usuario> findAll();
 
     Usuario findByemail(String email);
+
+    Usuario save(Usuario usuario);
+
 }

@@ -12,5 +12,5 @@ public interface ProductService {
 
     List<Product> getDestacado();
 
-    void save(int id);
+    Product save(Product product);
 }

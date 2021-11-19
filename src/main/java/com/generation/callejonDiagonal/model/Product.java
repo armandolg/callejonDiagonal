@@ -28,9 +28,6 @@ public class Product {
     @Column(name = "sto_pro")
     private int stock;
 
-    @Column(name = "text_pro")
-    private String descripcion;
-
     @ManyToOne
     @JoinColumn(name="id_est")
     private EstadoProductos estadoProductos;
@@ -39,9 +36,20 @@ public class Product {
     @JoinColumn(name="id_cat")
     private CategoriaProducto categoriaProducto;
 
+//    @OneToOne(mappedBy = "product")
+//    private EstadoProductos estadoProductos;
+//
+//    @OneToOne(mappedBy = "product")
+//    private CategoriaProducto categoriaProducto;
+
+    @Column(name = "text_pro")
+    private String descripcion;
+
     @OneToMany(mappedBy = "products")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<HistorialDetalle> historialDetalleList;
+
+
 
 
     //Metodos get y set Debo Agregarlos
